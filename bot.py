@@ -3,7 +3,7 @@ from telebot import types
 import json, io 
 
 from loguru import logger
-# from MySQL_fn import *
+from MySQL_fn import Tables
 
 with open('config.json', 'r', encoding='utf-8') as fh:
   config = json.load(fh)
@@ -17,6 +17,11 @@ def welcome(message):
   item2 = types.KeyboardButton("Start learning")
   markup.add(item1, item2)
   bot.send_message(message.chat.id, 'Hello boy!', reply_markup=markup)
+
+@bot.message_handler(commands=['createDB'])
+def create_new_db(message):
+  Tables.create('Test', 'id INT')
+  bot.send_message(message.chat.id, 'create ! ')
 
 
 @bot.message_handler(content_types=['text'])

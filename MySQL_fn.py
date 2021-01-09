@@ -123,5 +123,3 @@ class Tables:
         con
 
 
-db_wl = Tables('WL')
-db_wl.create('Test', 'id INT')
