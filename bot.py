@@ -24,6 +24,29 @@ def create_new_db(message):
   	create_table()
   	bot.send_message(message.chat.id, 'create ! ')
 
+@bot.message_handler(commands=['/add'])
+def add(message):
+    set_use_command(message.chat.id, '')
+    add_new_value(message.chat.id, 3, message.text)
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    item1 = types.KeyboardButton("/back")
+    bot.send_message(message.chat.id, 'Done !')
+    markup.add(item1)
+    bot.send_message(message.chat.id, 'o((⊙﹏⊙))o.', reply_markup=markup)
+    
+@bot.message_handler(commands=['/back'])
+def back(message):
+    add_new_value(message.chat.id, 1, '')
+    add_new_value(message.chat.id, 2, '')
+    set_use_command(message.chat.id, '')
+  	markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    item1 = types.KeyboardButton("/addNew")
+    item2 = types.KeyboardButton("/handleCheck")
+    item3 = types.KeyboardButton("/seeAll")
+    item4 = types.KeyboardButton("/delete")
+    markup.add(item1, item2, item3, item4)
+    bot.send_message(message.chat.id, 'o((⊙﹏⊙))o.', reply_markup=markup)
+
 
 @bot.message_handler(commands=['addNew'])
 def add_new(message):
@@ -45,7 +68,7 @@ def lisener(message):
             item3 = types.KeyboardButton("/seeAll")
             item4 = types.KeyboardButton("/delete")
             markup.add(item1, item2, item3, item4)
-            bot.send_message(message.chat.id, 'popaka', reply_markup=markup)
+            bot.send_message(message.chat.id, 'o((⊙﹏⊙))o.', reply_markup=markup)
         if message.text != ' ':
 
             if cheack_use_command(message.chat.id, 'addNewFirstValue'):
@@ -55,9 +78,14 @@ def lisener(message):
 
             if cheack_use_command(message.chat.id, 'addNewSecondValue'):
                 if check_value(message.chat.id, message.text):
-                    set_use_command(message.chat.id, '')
+                    set_use_command(message.chat.id, 'add?')
                     add_new_value(message.chat.id, 2, message.text)
-                    bot.send_message(message.chat.id, 'Done !')
+                    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+                    item1 = types.KeyboardButton("/add")
+                    item2 = types.KeyboardButton("/back")
+                    markup.add(item1, item2)
+                    bot.send_message(message.chat.id, 'add ?')
+            
         
 bot.polling(none_stop=True)
 
