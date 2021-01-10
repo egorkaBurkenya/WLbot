@@ -54,9 +54,10 @@ def lisener(message):
                 bot.send_message(message.chat.id, 'now write a translation of this word （*゜ー゜*）')
 
             if cheack_use_command(message.chat.id, 'addNewSecondValue'):
-                set_use_command(message.chat.id, '')
-                add_new_value(message.chat.id, 2, message.text)
-                bot.send_message(message.chat.id, 'Done !')
+                if check_value(message.chat.id, message.text):
+                    set_use_command(message.chat.id, '')
+                    add_new_value(message.chat.id, 2, message.text)
+                    bot.send_message(message.chat.id, 'Done !')
         
 bot.polling(none_stop=True)
 

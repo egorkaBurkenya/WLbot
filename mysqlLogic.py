@@ -35,3 +35,11 @@ def cheack_use_command(user_id, command):
 	except:
 		logger.info('error') 
 		return False 
+
+def check_value(user_id, value):
+	try:
+		table = Tables(f'user_{user_id}')
+		table.select('first_value', f'first_value = "{value}"')
+		return False
+	except:
+		return True
