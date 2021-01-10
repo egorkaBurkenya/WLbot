@@ -25,11 +25,18 @@ def create_new_db(message):
   	bot.send_message(message.chat.id, 'create ! ')
 
 
+@bot.message_handler(commands=['addNew'])
+def add_new(message):
+    set_use_command(message.chat.id, 'addNewFirstValue')		
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    item1 = types.KeyboardButton("/back")
+    bot.send_message(message.chat.id, 'write a word ＼(≧▽≦)／', reply_markup=markup)
+
 @bot.message_handler(content_types=['text'])
 def lisener(message):
     if message.chat.type == 'private':
         if message.text == 'How to use':
-	    bot.send_message(message.chat.id, 'First of all, click "Start learning" to start your learning process')
+            bot.send_message(message.chat.id, 'First of all, click "Start learning" to start your learning process')
         if message.text == 'Start learning':
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
             item1 = types.KeyboardButton("/addNew")

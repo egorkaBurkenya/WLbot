@@ -13,3 +13,13 @@ def add_user(user_id):
     except:
         users.insert('id, use_command, first_value, second_value', f'"{user_id}","","",""')
         create_user_table(user_id)
+
+def add_new_value(user_id, position, value):
+	table = Tables(f'user_{user_id}')
+	users = Tables('users')
+	if position == 1:
+		table.insert('first_value', value)
+
+def set_use_command(user_id, command):
+	users = Tables('users')
+	users.update(f'use_command = "{command}"', f'id = "{user_id}"')
