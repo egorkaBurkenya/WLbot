@@ -30,6 +30,7 @@ def add_new(message):
     set_use_command(message.chat.id, 'addNewFirstValue')		
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
     item1 = types.KeyboardButton("/back")
+    markup.add(item1)
     bot.send_message(message.chat.id, 'write a word ＼(≧▽≦)／', reply_markup=markup)
 
 @bot.message_handler(content_types=['text'])
@@ -46,8 +47,16 @@ def lisener(message):
             markup.add(item1, item2, item3, item4)
             bot.send_message(message.chat.id, 'popaka', reply_markup=markup)
         if message.text != ' ':
+
             if cheack_use_command(message.chat.id, 'addNewFirstValue'):
-		set_use_command(message.chat.id, 'addNewSecondValue')
-                bot.send_message(message.chat.id, 'popaka')
+                set_use_command(message.chat.id, 'addNewSecondValue')
+                add_new_value(message.chat.id, 1, message.text)
+                bot.send_message(message.chat.id, 'now write a translation of this word （*゜ー゜*）')
+
+            if cheack_use_command(message.chat.id, 'addNewSecondValue'):
+                set_use_command(message.chat.id, '')
+                add_new_value(message.chat.id, 2, message.text)
+                bot.send_message(message.chat.id, 'Done !')
+        
 bot.polling(none_stop=True)
 

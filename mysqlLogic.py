@@ -16,7 +16,6 @@ def add_user(user_id):
 
 def add_new_value(user_id, position, value):
 	table = Tables(f'user_{user_id}')
-	users = Tables('users')
 	if position == 1:
 		table.insert('first_value', value)
 
