@@ -41,4 +41,7 @@ def cheack_use_command(user_id, command):
 def check_value(user_id, value):
 	table = Tables('users')
 	first_value = table.select('first_value', f'id = "{user_id}"')
-	logger.debug(first_value)
+	if first_value['first_value'] == value: 
+			return True
+	else:
+		return False  
