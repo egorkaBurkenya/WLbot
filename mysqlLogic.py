@@ -29,19 +29,16 @@ def cheack_use_command(user_id, command):
 	users = Tables('users')
 	try:
 		use_command = users.select('use_command', f'id = "{user_id}"')
-		if use_command == command: 
+		if use_command['use_command'] == command: 
 			return True
 		else:
-			logger.info(use_command, '|', command)
+			logger.debug(use_command, '|', command)
 			return False 
 	except:
-		logger.info('error') 
+		logger.error('error') 
 		return False 
 
 def check_value(user_id, value):
-	try:
-		table = Tables('users')
-		table.select('first_value', f'id = "{user_id}"')
-		return False
-	except:
-		return True
+	table = Tables('users')
+	first_value = table.select('first_value', f'id = "{user_id}"')
+	logger.debug(first_value)
