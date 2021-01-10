@@ -19,7 +19,7 @@ def add_new_value(user_id, position, value):
 	if position == 1:
 		table.update(f'first_value = "{value}"', f'id = "{user_id}"')
 	if position == 2:
-		table.update('second_value', f'"{value}"')
+		table.update(f'second_value = "{value}"', f'id = "{user_id}"')
 
 def set_use_command(user_id, command):
 	users = Tables('users')
@@ -42,6 +42,6 @@ def check_value(user_id, value):
 	table = Tables('users')
 	first_value = table.select('first_value', f'id = "{user_id}"')
 	if first_value['first_value'] == value: 
-			return True
+			return False
 	else:
-		return False  
+		return True  
