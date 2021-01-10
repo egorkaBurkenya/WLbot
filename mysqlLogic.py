@@ -15,11 +15,11 @@ def add_user(user_id):
         create_user_table(user_id)
 
 def add_new_value(user_id, position, value):
-	table = Tables(f'user_{user_id}')
+	table = Tables('users')
 	if position == 1:
 		table.insert('first_value', f'"{value}"')
 	if position == 2:
-		table.insert('second_value', f'"{value}"')
+		table.update('second_value', f'"{value}"')
 
 def set_use_command(user_id, command):
 	users = Tables('users')
