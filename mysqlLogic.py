@@ -29,7 +29,7 @@ def cheack_use_command(user_id, command):
 	users = Tables('users')
 	try:
 		use_command = users.select('use_command', f'id = "{user_id}"')
-		if use_command['use_command'] == command: 
+		if use_command == command: 
 			return True
 		else:
 			logger.info(use_command, '|', command)
