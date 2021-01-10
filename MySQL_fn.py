@@ -12,7 +12,7 @@ class Tables:
     def create(table_name, what):
         con = Tables.join()
         with con.cursor() as cursor:
-            query = f"CREATE TABLE {table_name} ({what});"
+            query = f"CREATE TABLE IF NOT EXISTS {table_name} ({what});"
             logger.info(query)
             cursor.execute(query)
             con.commit()
@@ -26,7 +26,7 @@ class Tables:
         connection = pymysql.connect(
         host='localhost',
         user='root',
-        password='',
+        password='123',
         db='WL',
         charset='utf8mb4',
         cursorclass=DictCursor)
@@ -87,6 +87,16 @@ class Tables:
             con.commit()
         con.close()
 
+    def insert(self, where ,what):
+
+        con = Tables.join()
+
+        with con.cursor() as cursor:
+            query = f"INSERT INTO {self.table_name} ({where}) VALUES ({what})"
+            logger.info(query)
+            cursor.execute(query)
+            con.commit()
+        con.close()
 
     def delete(self, where):
 
