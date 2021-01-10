@@ -17,7 +17,7 @@ def add_user(user_id):
 def add_new_value(user_id, position, value):
 	table = Tables(f'user_{user_id}')
 	if position == 1:
-		table.insert('first_value', value)
+		table.insert('first_value', 'value')
 
 def set_use_command(user_id, command):
 	users = Tables('users')
@@ -27,9 +27,11 @@ def cheack_use_command(user_id, command):
 	users = Tables('users')
 	try:
 		use_command = users.select('use_command', user_id)
-		if use_command == command: 
+		if use_command['use_command'] == command: 
 			return True
 		else:
+			logger.info(use_command, '|', command)
 			return False 
-	except: 
+	except:
+		logger.info('error') 
 		return False 
