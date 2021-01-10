@@ -46,7 +46,8 @@ def lisener(message):
             markup.add(item1, item2, item3, item4)
             bot.send_message(message.chat.id, 'popaka', reply_markup=markup)
         if message.text != ' ':
-            if cheack_use_command('addNewFirstValue'):
+            if cheack_use_command(message.chat.id, 'addNewFirstValue'):
+		set_use_command(message.chat.id, 'addNewSecondValue')
                 bot.send_message(message.chat.id, 'popaka')
 bot.polling(none_stop=True)
 
