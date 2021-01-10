@@ -40,8 +40,8 @@ def cheack_use_command(user_id, command):
 
 def check_value(user_id, value):
 	try:
-		table = Tables(f'user_{user_id}')
-		table.select('first_value', f'first_value = "{value}"')
+		table = Tables('users')
+		table.select('first_value', f'id = "{user_id}"')
 		return False
 	except:
 		return True
