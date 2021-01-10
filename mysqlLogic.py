@@ -16,10 +16,15 @@ def add_user(user_id):
 
 def add_new_value(user_id, position, value):
 	table = Tables('users')
+	user_table = Tables(f'user_{user_id}')
 	if position == 1:
 		table.update(f'first_value = "{value}"', f'id = "{user_id}"')
 	if position == 2:
 		table.update(f'second_value = "{value}"', f'id = "{user_id}"')
+	if position == 3:
+		first_value = table.select('first_value', f'id = "{user_id}"')
+		second_value = table.select('second_value', f'id = "{user_id}"')
+		user_table.insert(f'first_value, second_value', f'"{first_value}","{second_value}"')
 
 def set_use_command(user_id, command):
 	users = Tables('users')
