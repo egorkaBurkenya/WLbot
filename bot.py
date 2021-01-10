@@ -45,8 +45,8 @@ def lisener(message):
             item4 = types.KeyboardButton("/delete")
             markup.add(item1, item2, item3, item4)
             bot.send_message(message.chat.id, 'popaka', reply_markup=markup)
-	if message.text != ' ':
-	    if cheack_use_command('addNewFirstValue'):
-	        bot.send_message(message.chat.id, 'popaka')
+        if message.text != ' ':
+            if cheack_use_command('addNewFirstValue'):
+                bot.send_message(message.chat.id, 'popaka')
 bot.polling(none_stop=True)
 
