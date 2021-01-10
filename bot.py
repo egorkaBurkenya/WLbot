@@ -33,13 +33,13 @@ def add(message):
     bot.send_message(message.chat.id, 'Done !')
     markup.add(item1)
     bot.send_message(message.chat.id, 'o((⊙﹏⊙))o.', reply_markup=markup)
-    
+
 @bot.message_handler(commands=['/back'])
 def back(message):
     add_new_value(message.chat.id, 1, '')
     add_new_value(message.chat.id, 2, '')
     set_use_command(message.chat.id, '')
-  	markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
     item1 = types.KeyboardButton("/addNew")
     item2 = types.KeyboardButton("/handleCheck")
     item3 = types.KeyboardButton("/seeAll")
