@@ -12,7 +12,7 @@ class Tables:
     def create(table_name, what):
         con = Tables.join()
         with con.cursor() as cursor:
-            query = f"CREATE TABLE IF NOT EXISTS {table_name} ({what});"
+            query = f"CREATE TABLE IF NOT EXISTS {table_name} ({what}) ENGINE=InnoDB DEFAULT CHARSET=utf8;"
             logger.info(query)
             cursor.execute(query)
             con.commit()
