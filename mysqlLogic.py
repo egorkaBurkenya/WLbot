@@ -22,4 +22,15 @@ def add_new_value(user_id, position, value):
 
 def set_use_command(user_id, command):
 	users = Tables('users')
-	users.update(f'use_command = "{command}"', f'id = "{user_id}"')
+	users.update(f'use_command = "{command}"', f'id = "{user_id}"') 
+
+def cheack_use_command(user_id, command):
+	users = Tables('users')
+	try:
+		use_command = users.select('use_command', user_id)
+		if use_command == command: 
+			return True
+		else:
+			return False 
+	except: 
+		return False 
