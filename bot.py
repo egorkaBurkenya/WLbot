@@ -130,7 +130,7 @@ def lisener(message):
                 bot.send_message(message.chat.id, 'Deleted! ㄟ( ▔, ▔ )ㄏ', reply_markup=markup)
             if cheack_use_command(message.chat.id, 'check'):
                 set_use_command(message.chat.id, '')
-                if message.text == select_new_value(message.chat.id)['second_value']:
+                if message.text.lower() == select_new_value(message.chat.id)['second_value'].lower():
                     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
                     item1 = types.KeyboardButton("/back")
                     markup.add(item1)
