@@ -33,7 +33,7 @@ def add(message):
     markup.add(item1)
     bot.send_message(message.chat.id, 'Done !', reply_markup=markup)
 
-@bot.message_handler(commands=['/back'])
+@bot.message_handler(commands=['back'])
 def back(message):
     add_new_value(message.chat.id, 1, '')
     add_new_value(message.chat.id, 2, '')
