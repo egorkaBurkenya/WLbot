@@ -24,12 +24,10 @@ def create_new_db(message):
   	create_table()
   	bot.send_message(message.chat.id, 'create ! ')
 
-@bot.message_handler(commands=['/add'])
+@bot.message_handler(commands=['add'])
 def add(message):
     set_use_command(message.chat.id, '')
-    logger.debug('30')
     add_new_value(message.chat.id, 3, message.text)
-    logger.debug('32')
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
     item1 = types.KeyboardButton("/back")
     markup.add(item1)
