@@ -54,3 +54,8 @@ def check_value(user_id, value):
 def select_new_value(user_id):
 	user = Tables('users')
 	return user.select('first_value, second_value', f'id = "{user_id}"')
+
+def select_all_value(user_id):
+	table = Tables(f'user_{user_id}')
+	answer = table.select_all()
+	logger.debug(answer)
