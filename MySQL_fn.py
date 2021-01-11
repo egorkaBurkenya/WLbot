@@ -71,7 +71,7 @@ class Tables:
             user_information = [*cursor]
         con.close()
         logger.info(user_information)
-        return user_information[0]
+        return user_information
 
     def insert_all(self, what):
         """
