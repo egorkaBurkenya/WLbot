@@ -46,6 +46,13 @@ def back(message):
     markup.add(item1, item2, item3, item4)
     bot.send_message(message.chat.id, 'o((⊙﹏⊙))o.', reply_markup=markup)
 
+@bot.message_handler(commands=['seeAll'])
+def seeAll(message):
+
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    item1 = types.KeyboardButton("/back")
+    markup.add(item1)
+    bot.send_message(message.chat.id, f'{select_all_value(message.chat.id)}', reply_markup=markup)
 
 @bot.message_handler(commands=['addNew'])
 def add_new(message):

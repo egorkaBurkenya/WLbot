@@ -59,3 +59,4 @@ def select_all_value(user_id):
 	table = Tables(f'user_{user_id}')
 	answer = table.select_all()
 	logger.debug(answer)
+	return answer
