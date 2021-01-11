@@ -1,5 +1,5 @@
 import random
-import logger
+from loguru import logger
 
 def unpucking(value):
   answer = ''
