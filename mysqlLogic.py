@@ -24,7 +24,7 @@ def add_new_value(user_id, position, value):
 	if position == 3:
 		first_value = table.select('first_value', f'id = "{user_id}"')
 		second_value = table.select('second_value', f'id = "{user_id}"')
-		user_table.insert(f'first_value, second_value', f'"{first_value['first_value']}","{second_value['second_value']}"')
+		user_table.insert(f'first_value, second_value', f'"{first_value.first_value}","{second_value.second_value}"')
 
 def set_use_command(user_id, command):
 	users = Tables('users')
