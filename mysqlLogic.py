@@ -9,7 +9,7 @@ def create_user_table(user_id):
 def add_user(user_id):
     users = Tables('users')
     try:
-        users.select('id', 'id')
+        users.select('id', f'id = "{user_id}"')
     except:
         users.insert('id, use_command, first_value, second_value', f'"{user_id}","","",""')
         create_user_table(user_id)
