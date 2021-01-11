@@ -83,7 +83,8 @@ def lisener(message):
                     item1 = types.KeyboardButton("/add")
                     item2 = types.KeyboardButton("/back")
                     markup.add(item1, item2)
-                    bot.send_message(message.chat.id, 'add ?', reply_markup=markup)
+                    value = select_new_value(message.chat.id)
+                    bot.send_message(message.chat.id, f'{value['first_value']} - {value['second_value']} \n\n add ?', reply_markup=markup)
             
         
 bot.polling(none_stop=True)

@@ -50,3 +50,7 @@ def check_value(user_id, value):
 			return False
 	else:
 		return True  
+
+def select_new_value(user_id):
+	user = Tables('users')
+	return user.select('first_value, second_value', f'id = "{user_id}"')
