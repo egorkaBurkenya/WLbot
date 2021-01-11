@@ -136,6 +136,12 @@ def lisener(message):
                     markup.add(item1)
                     bot.send_message(message.chat.id, f'{select_new_value(message.chat.id)["first_value"]} - {select_new_value(message.chat.id)["second_value"]}')
                     bot.send_message(message.chat.id, 'smart girl 🔮', reply_markup=markup)
+                else: 
+                    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+                    item1 = types.KeyboardButton("/back")
+                    markup.add(item1)
+                    bot.send_message(message.chat.id, f'{select_new_value(message.chat.id)["first_value"]} - {select_new_value(message.chat.id)["second_value"]}')
+                    bot.send_message(message.chat.id, 'stuped girl 😒', reply_markup=markup)
 
 
 
