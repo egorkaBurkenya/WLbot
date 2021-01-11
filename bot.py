@@ -48,6 +48,18 @@ def back(message):
     markup.add(item1, item5, item2, item3, item4)
     bot.send_message(message.chat.id, 'o((⊙﹏⊙))o.', reply_markup=markup)
 
+@bot.message_handler(commands=['handleCheck'])
+def handleCheck(message):
+    set_use_command(message.chat.id, 'check')
+    value = generate_random_value(select_all_value(message.chat.id))
+    add_new_value(message.chat.id, 1, value['first_value'])
+    add_new_value(message.chat.id, 2, value['second_value'])
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    item1 = types.KeyboardButton("/back")
+    markup.add(item1)
+    bot.send_message(message.chat.id, 'write the translation of the word')
+    bot.send_message(message.chat.id, f'{value["first_value"]}', reply_markup=markup)
+
 @bot.message_handler(commands=['learnNew'])
 def learnNew(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
@@ -116,6 +128,17 @@ def lisener(message):
                 item1 = types.KeyboardButton("/back")
                 markup.add(item1)
                 bot.send_message(message.chat.id, 'Deleted! ㄟ( ▔, ▔ )ㄏ', reply_markup=markup)
+            if cheack_use_command(message.chat.id, 'check'):
+                set_use_command(message.chat.id, '')
+                if message.text == select_new_value(user_id)['second_value']:
+                    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+                    item1 = types.KeyboardButton("/back")
+                    markup.add(item1)
+                    bot.send_message(message.chat.id, f'{select_new_value(user_id)["first_value"]} - {select_new_value(user_id)["second_value"]}')
+                    bot.send_message(message.chat.id, 'smart girl 🔮', reply_markup=markup)
+
+
+
             
 bot.polling(none_stop=True)
 

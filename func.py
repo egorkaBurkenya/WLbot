@@ -11,3 +11,6 @@ def unpucking(value):
 def unpucking_random_value(value):
   value = value[random.randint(0, len(value) - 1)]
   return f'{value["first_value"]} - {value["second_value"]}'
+
+def generate_random_value(value):
+  return value[random.randint(0, len(value) - 1)]
