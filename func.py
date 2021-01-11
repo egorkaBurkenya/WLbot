@@ -9,5 +9,7 @@ def unpucking(value):
   return answer
 
 def unpucking_random_value(value):
+  logger.debug(value)
+  logger.debug(len(value))
   value = value[random.randint(0, len(value))]
   return f'{value["first_value"]} - {value["second_value"]}'
