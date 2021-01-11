@@ -1,5 +1,4 @@
 import random
-from loguru import logger
 
 def unpucking(value):
   answer = ''
@@ -10,8 +9,5 @@ def unpucking(value):
   return answer
 
 def unpucking_random_value(value):
-  logger.debug(value)
-  logger.debug(len(value))
-  logger.error(random.randint(0, len(value)))
-  value = value[random.randint(0, len(value))]
+  value = value[random.randint(0, len(value) - 1)]
   return f'{value["first_value"]} - {value["second_value"]}'
