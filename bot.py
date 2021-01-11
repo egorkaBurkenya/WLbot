@@ -41,11 +41,19 @@ def back(message):
     set_use_command(message.chat.id, '')
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
     item1 = types.KeyboardButton("/addNew")
+    item5 = types.KeyboardButton("/learnNew")
     item2 = types.KeyboardButton("/handleCheck")
     item3 = types.KeyboardButton("/seeAll")
     item4 = types.KeyboardButton("/delete")
-    markup.add(item1, item2, item3, item4)
+    markup.add(item1, item5, item2, item3, item4)
     bot.send_message(message.chat.id, 'o((⊙﹏⊙))o.', reply_markup=markup)
+
+@bot.message_handler(commands=['learnNew'])
+def learnNew(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    item1 = types.KeyboardButton("/back")
+    markup.add(item1)
+    bot.send_message(message.chat.id, f'{unpucking_random_value(select_all_value(message.chat.id))}', reply_markup=markup)
 
 @bot.message_handler(commands=['seeAll'])
 def seeAll(message):
@@ -78,10 +86,11 @@ def lisener(message):
         if message.text == 'Start learning':
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
             item1 = types.KeyboardButton("/addNew")
+            item5 = types.KeyboardButton("/learnNew")
             item2 = types.KeyboardButton("/handleCheck")
             item3 = types.KeyboardButton("/seeAll")
             item4 = types.KeyboardButton("/delete")
-            markup.add(item1, item2, item3, item4)
+            markup.add(item1, item5, item2, item3, item4)
             bot.send_message(message.chat.id, 'o((⊙﹏⊙))o.', reply_markup=markup)
         if message.text != ' ':
 
