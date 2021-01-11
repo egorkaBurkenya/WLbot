@@ -49,11 +49,18 @@ def back(message):
 
 @bot.message_handler(commands=['seeAll'])
 def seeAll(message):
-
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
     item1 = types.KeyboardButton("/back")
     markup.add(item1)
     bot.send_message(message.chat.id, f'{unpucking(select_all_value(message.chat.id))}', reply_markup=markup)
+
+@bot.message_handler(commands=['delete'])
+def delete(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    item1 = types.KeyboardButton("/back")
+    markup.add(item1)
+    set_use_command(message.chat.id, 'delete')
+    bot.send_message(message.chat.id, 'what do you want to delete (write first value)', reply_markup=markup)
 
 @bot.message_handler(commands=['addNew'])
 def add_new(message):
@@ -93,6 +100,13 @@ def lisener(message):
                     markup.add(item1, item2)
                     value = select_new_value(message.chat.id)
                     bot.send_message(message.chat.id, f'Σ(っ °Д °;)っ {value["first_value"]} - {value["second_value"]}', reply_markup=markup)
+            if cheack_use_command(message.chat.id, 'delete'):
+                set_use_command(message.chat.id, '')
+                delete_value(message.chat.id, message.text)
+                markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+                item1 = types.KeyboardButton("/back")
+                markup.add(item1)
+                bot.send_message(message.chat.id, 'Deleted! ㄟ( ▔, ▔ )ㄏ', reply_markup=markup)
             
 bot.polling(none_stop=True)
 

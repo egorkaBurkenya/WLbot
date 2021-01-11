@@ -60,3 +60,10 @@ def select_all_value(user_id):
 	answer = table.select_all()
 	logger.debug(answer)
 	return answer
+
+def delete_value(user_id, value):
+	table = Tables(f'user_{user_id}')
+	try:
+		table.delete(f'first_value = "{value}"')
+	except:
+		logger.debug('not delete')
