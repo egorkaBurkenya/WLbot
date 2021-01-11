@@ -30,9 +30,8 @@ def add(message):
     add_new_value(message.chat.id, 3, message.text)
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
     item1 = types.KeyboardButton("/back")
-    bot.send_message(message.chat.id, 'Done !')
     markup.add(item1)
-    bot.send_message(message.chat.id, 'o((⊙﹏⊙))o.', reply_markup=markup)
+    bot.send_message(message.chat.id, 'Done !', reply_markup=markup)
 
 @bot.message_handler(commands=['/back'])
 def back(message):
