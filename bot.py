@@ -4,6 +4,7 @@ import json, io
 
 from loguru import logger
 from mysqlLogic import *
+from func import * 
 
 with open('config.json', 'r', encoding='utf-8') as fh:
 	config = json.load(fh)
@@ -52,7 +53,7 @@ def seeAll(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
     item1 = types.KeyboardButton("/back")
     markup.add(item1)
-    bot.send_message(message.chat.id, f'{select_all_value(message.chat.id)[0]}', reply_markup=markup)
+    bot.send_message(message.chat.id, f'{unpucking(select_all_value(message.chat.id))}', reply_markup=markup)
 
 @bot.message_handler(commands=['addNew'])
 def add_new(message):
