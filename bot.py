@@ -84,7 +84,7 @@ def lisener(message):
                     item2 = types.KeyboardButton("/back")
                     markup.add(item1, item2)
                     value = select_new_value(message.chat.id)
-                    bot.send_message(message.chat.id, f'Σ(っ °Д °;)っ {value["first_value"]["first_value"]} - {value["second_value"]["second_value"]}', reply_markup=markup)
+                    bot.send_message(message.chat.id, f'Σ(っ °Д °;)っ {value["first_value"]} - {value["second_value"]}', reply_markup=markup)
             
 bot.polling(none_stop=True)
 
