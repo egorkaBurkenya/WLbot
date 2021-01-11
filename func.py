@@ -1,4 +1,5 @@
 import random
+import logger
 
 def unpucking(value):
   answer = ''
