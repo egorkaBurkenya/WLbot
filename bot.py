@@ -1,6 +1,5 @@
 import telebot
 from telebot import types
-from telebot import apihelper
 import json, io 
 
 from loguru import logger
@@ -11,7 +10,6 @@ with open('config.json', 'r', encoding='utf-8') as fh:
 	config = json.load(fh)
 
 bot = telebot.TeleBot(config['TOKEN'])
-apihelper.proxy = {'https': 'socks5h://LOGIN:PASSWORD@IP:1080'}
 
 @bot.message_handler(commands=['start'])
 def welcome(message):
