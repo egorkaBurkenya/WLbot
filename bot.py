@@ -75,25 +75,61 @@ def handleCheck(message):
 
 @bot.message_handler(commands=['learnNew'])
 def learnNew(message):
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-    item1 = types.KeyboardButton("/back")
-    markup.add(item1)
-    bot.send_message(message.chat.id, f'{unpucking_random_value(select_all_value(message.chat.id))}', reply_markup=markup)
+    try:
+        if len(select_all_value(message.chat.id)) > 0:
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/back")
+            markup.add(item1)
+            bot.send_message(message.chat.id, f'{unpucking_random_value(select_all_value(message.chat.id))}', reply_markup=markup)
+        else: 
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/addNew")
+            markup.add(item1)
+            bot.send_message(message.chat.id, 'no words..', reply_markup=markup)
+    except:
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/addNew")
+            markup.add(item1)
+            bot.send_message(message.chat.id, 'no words..', reply_markup=markup)
 
 @bot.message_handler(commands=['seeAll'])
 def seeAll(message):
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-    item1 = types.KeyboardButton("/back")
-    markup.add(item1)
-    bot.send_message(message.chat.id, f'{unpucking(select_all_value(message.chat.id))}', reply_markup=markup)
+    try:
+        if len(select_all_value(message.chat.id)) > 0:
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/back")
+            markup.add(item1)
+            bot.send_message(message.chat.id, f'{unpucking(select_all_value(message.chat.id))}', reply_markup=markup)
+        else: 
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/addNew")
+            markup.add(item1)
+            bot.send_message(message.chat.id, 'no words..', reply_markup=markup)
+    except:
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/addNew")
+            markup.add(item1)
+            bot.send_message(message.chat.id, 'no words..', reply_markup=markup)
 
 @bot.message_handler(commands=['delete'])
 def delete(message):
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-    item1 = types.KeyboardButton("/back")
-    markup.add(item1)
-    set_use_command(message.chat.id, 'delete')
-    bot.send_message(message.chat.id, 'what do you want to delete (write first value)', reply_markup=markup)
+    try:
+        if len(select_all_value(message.chat.id)) > 0:
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/back")
+            markup.add(item1)
+            set_use_command(message.chat.id, 'delete')
+            bot.send_message(message.chat.id, 'what do you want to delete (write first value)', reply_markup=markup)
+        else: 
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/addNew")
+            markup.add(item1)
+            bot.send_message(message.chat.id, 'no words..', reply_markup=markup)
+    except:
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/addNew")
+            markup.add(item1)
+            bot.send_message(message.chat.id, 'no words..', reply_markup=markup)
 
 @bot.message_handler(commands=['addNew'])
 def add_new(message):
