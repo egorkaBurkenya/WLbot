@@ -94,7 +94,41 @@ def add_new(message):
 def lisener(message):
     if message.chat.type == 'private':
         if message.text == 'How to use':
-            bot.send_message(message.chat.id, 'First of all, click "Start learning" to start your learning process')
+
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("Start learning")
+            markup.add(item1)
+
+            bot.send_message(message.chat.id, """
+            Во первых привет ! во вторых надеюсь что тебе понравится пользоваться моим ботом.
+
+            После прочтения вам нужно будет нажать "Start learning"
+
+            /addNew - Добавит новый топик 
+            /learnNew - Отправит вам рандомный топик из добавленных вами 
+            /handleCheck - Проверит ваши знания отправив вам рандомный топик, а вам нужно будет написать его перевод/определение
+            /seeAll - Отправит вам все добавленные слова
+            /delete - Удалит топик 
+
+            И если вдруг захотите поддержать проект ! можете скинуть денюшку 
+            Сбер банк: 4274 3200 4061 2429
+
+            -
+
+            First of all, hello ! Secondly, I hope that you will enjoy using my bot.
+
+            After reading it, you will need to click "Start learning"
+
+            /addNew - Add a new topic 
+            /learnNew - Will send you a random topic from the ones you added 
+            /handleCheck - It will test your knowledge by sending you a random topic, and you will need to write its translation/definition
+            /seeAll - Will send you all the added words
+            /delete - Delete a topic
+
+            And if you suddenly want to support the project ! you can throw off the money
+            Sberbank: 4274 3200 4061 2429
+
+            """, reply_markup=markup)
         if message.text == 'Start learning':
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
             item1 = types.KeyboardButton("/addNew")
@@ -135,13 +169,13 @@ def lisener(message):
                     item1 = types.KeyboardButton("/back")
                     markup.add(item1)
                     bot.send_message(message.chat.id, f'{select_new_value(message.chat.id)["first_value"]} - {select_new_value(message.chat.id)["second_value"]}')
-                    bot.send_message(message.chat.id, 'smart girl 🔮', reply_markup=markup)
+                    bot.send_message(message.chat.id, 'Right! well done 🔮', reply_markup=markup)
                 else: 
                     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
                     item1 = types.KeyboardButton("/back")
                     markup.add(item1)
                     bot.send_message(message.chat.id, f'{select_new_value(message.chat.id)["first_value"]} - {select_new_value(message.chat.id)["second_value"]}')
-                    bot.send_message(message.chat.id, 'stuped girl 😒', reply_markup=markup)
+                    bot.send_message(message.chat.id, 'try again another time 😒', reply_markup=markup)
 
 
 
