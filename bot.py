@@ -50,15 +50,28 @@ def back(message):
 
 @bot.message_handler(commands=['handleCheck'])
 def handleCheck(message):
-    set_use_command(message.chat.id, 'check')
-    value = generate_random_value(select_all_value(message.chat.id))
-    add_new_value(message.chat.id, 1, value['first_value'])
-    add_new_value(message.chat.id, 2, value['second_value'])
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-    item1 = types.KeyboardButton("/back")
-    markup.add(item1)
-    bot.send_message(message.chat.id, 'write the translation of the word')
-    bot.send_message(message.chat.id, f'{value["first_value"]}', reply_markup=markup)
+    try:
+        if len(select_all_value(message.chat.id)) > 0:
+            set_use_command(message.chat.id, 'check')
+            value = generate_random_value(select_all_value(message.chat.id))
+            add_new_value(message.chat.id, 1, value['first_value'])
+            add_new_value(message.chat.id, 2, value['second_value'])
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/back")
+            markup.add(item1)
+            bot.send_message(message.chat.id, 'write the translation of the word')
+            bot.send_message(message.chat.id, f'{value["first_value"]}', reply_markup=markup)
+        else: 
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/addNew")
+            markup.add(item1)
+            bot.send_message(message.chat.id, 'no words..', reply_markup=markup)
+    except:
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            item1 = types.KeyboardButton("/addNew")
+            markup.add(item1)
+            bot.send_message(message.chat.id, 'no words..', reply_markup=markup)
+
 
 @bot.message_handler(commands=['learnNew'])
 def learnNew(message):
