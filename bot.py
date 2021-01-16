@@ -6,7 +6,7 @@ from loguru import logger
 from mysqlLogic import *
 from func import * 
 
-with open('config.json', 'r', encoding='utf-8') as fh:
+with open('/home/EgorkaKuro/bots/WLbot/config.json', 'r', encoding='utf-8') as fh:
 	config = json.load(fh)
 
 bot = telebot.TeleBot(config['TOKEN'])
@@ -229,5 +229,5 @@ def lisener(message):
 
 
             
-bot.polling(none_stop=True)
+bot.polling(none_stop=True, interval=0)
 
